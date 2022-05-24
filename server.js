@@ -12,6 +12,8 @@ app.engine('handlebars', engine({defaultLayout: 'main'}));
 // Look for files that end with .handlebars
 app.set('view engine', 'handlebars');
 
+app.use(express.static('public'));
+
 // Routes & Renders homepage.handlebars
 app.get('/', function (req, res) {
     res.render('homepage', {
