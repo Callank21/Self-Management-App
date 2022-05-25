@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { Heading, Task } = require('../../models');
-const { route } = require('./project-routes');
+const { Project, Heading, Task } = require('../../models');
 
 router.get('/', (req, res) => {
     Heading.findAll({
