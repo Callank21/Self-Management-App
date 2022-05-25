@@ -19,6 +19,10 @@ Heading.init(
         time: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            references: {
+                model: 'task',
+                key: 'time'
+            }
        },
        project_id: {
            type: DataTypes.INTEGER,

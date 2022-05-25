@@ -14,6 +14,14 @@ Project.init(
         title: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        time: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'heading',
+                key: 'time'
+            }
         }
     },
     {
