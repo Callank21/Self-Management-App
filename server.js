@@ -12,6 +12,7 @@ app.engine('handlebars', engine({defaultLayout: 'main'}));
 // Look for files that end with .handlebars
 app.set('view engine', 'handlebars');
 
+// Looks for style.css
 app.use(express.static('public'));
 
 // Routes & Renders homepage.handlebars
