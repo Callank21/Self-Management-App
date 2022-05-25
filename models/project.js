@@ -15,6 +15,7 @@ Project.init(
             type: DataTypes.STRING,
             allowNull: false
         },
+        //figure out how to take the time values from heading and aggregate them into a single number (in minutes)
         time: {
             type: DataTypes.INTEGER,
             allowNull: false,
