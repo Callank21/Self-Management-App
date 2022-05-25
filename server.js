@@ -29,6 +29,13 @@ app.get('/dashboard', function (req, res) {
         title: 'My Dashboard'
     });
 });
+
+// // Routes & Renders dashboard.handlebars
+// app.get('/header', function (req, res) {
+//     res.render('header', {
+//         title: ''
+//     });
+// });
 // =============================================================
 
 
