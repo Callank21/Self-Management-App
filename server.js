@@ -1,5 +1,6 @@
 const express = require('express');
 const {engine}  = require('express-handlebars');
+const path = require('path');
 
 // Sets up the Express-Handlebars
 // =============================================================
@@ -31,9 +32,15 @@ app.get('/dashboard', function (req, res) {
     });
 });
 
-app.get('./header', function (req, res) {
-    res.render('header', {
-        title: 'My Dashboard'
+app.get('/login', function (req, res) {
+    res.render('login', {
+        title: 'Log In'
+    });
+});
+
+app.get('/signup', function (req, res) {
+    res.render('signup', {
+        title: 'Sign Up'
     });
 });
 
