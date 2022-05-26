@@ -1,11 +1,14 @@
 const express = require('express');
 const { engine } = require('express-handlebars');
+
+//----- features will be added soon ----//
 // utilize the sequalize from the connection.js
-const sequalize = require('./config/connection');
+// const sequalize = require('./config/connection');
 // import helpers to implement
-const helpers = require('./utils/helpers');
+// const helpers = require('./utils/helpers');
 // pass the helpers to express handlebars
-const hbs = exphbs.create({ helpers });
+// const hbs = exphbs.create({ helpers });
+//------ Jin -----------//
 
 // Sets up the Express-Handlebars
 // =============================================================
@@ -37,9 +40,6 @@ app.get('/dashboard', function (req, res) {
 // =============================================================
 
 // Lister
-// turn on connection to db and server
-sequalize.sync({ force: true }).then(() => {
-  app.listen(PORT, () => {
-    console.log(`App listening on port http://localhost:${PORT}!`);
-  });
+app.listen(PORT, () => {
+  console.log(`App listening on port http://localhost:${PORT}!`);
 });
