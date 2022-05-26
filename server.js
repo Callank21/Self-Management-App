@@ -15,6 +15,7 @@ app.set('view engine', 'handlebars');
 // Looks for style.css
 app.use(express.static('public'));
 
+
 // Routes & Renders homepage.handlebars
 app.get('/', function (req, res) {
     res.render('homepage', {
@@ -26,6 +27,12 @@ app.get('/', function (req, res) {
 // Routes & Renders dashboard.handlebars
 app.get('/dashboard', function (req, res) {
     res.render('dashboard', {
+        title: 'My Dashboard'
+    });
+});
+
+app.get('./header', function (req, res) {
+    res.render('header', {
         title: 'My Dashboard'
     });
 });
