@@ -1,5 +1,11 @@
 const express = require('express');
-const {engine}  = require('express-handlebars');
+const { engine } = require('express-handlebars');
+// utilize the sequalize from the connection.js
+const sequalize = require('./config/connection');
+// import helpers to implement
+const helpers = require('./utils/helpers');
+// pass the helpers to express handlebars
+const hbs = exphbs.create({ helpers });
 
 // Sets up the Express-Handlebars
 // =============================================================
@@ -8,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Have engine use handlebars template
-app.engine('handlebars', engine({defaultLayout: 'main'}));
+app.engine('handlebars', engine({ defaultLayout: 'main' }));
 // Look for files that end with .handlebars
 app.set('view engine', 'handlebars');
 
@@ -16,22 +22,24 @@ app.use(express.static('public'));
 
 // Routes & Renders homepage.handlebars
 app.get('/', function (req, res) {
-    res.render('homepage', {
-        title: 'Home Page',
-// can pass more values here(eg.): "name: 'lorem'"
-    });
+  res.render('homepage', {
+    title: 'Home Page',
+    // can pass more values here(eg.): "name: 'lorem'"
+  });
 });
 
 // Routes & Renders dashboard.handlebars
 app.get('/dashboard', function (req, res) {
-    res.render('dashboard', {
-        title: 'My Dashboard'
-    });
+  res.render('dashboard', {
+    title: 'My Dashboard',
+  });
 });
 // =============================================================
 
-
 // Lister
-app.listen(PORT, () => {
+// turn on connection to db and server
+sequalize.sync({ force: true }).then(() => {
+  app.listen(PORT, () => {
     console.log(`App listening on port http://localhost:${PORT}!`);
   });
+});
