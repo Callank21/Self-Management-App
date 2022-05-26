@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'title',
+            'desc',
             'time',
             'project_id'
         ]
@@ -44,7 +44,6 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     Task.create({
-        title: req.body.title,
         desc: req.body.desc
     })
     .then(dbPostData => res.json(dbPostData))
@@ -56,7 +55,6 @@ router.post('/', (req, res) => {
 
 router.put(':/id', (req, res) => {
     Task.update({
-        title: req.body.title,
         desc: req.body.desc
     },
     {

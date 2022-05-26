@@ -11,7 +11,7 @@ Heading.init(
             primaryKey: true,
             autoIncrement: true
         },
-        title: {
+        heading_title: {
             type: DataTypes.STRING,
             allowNull: false
         },

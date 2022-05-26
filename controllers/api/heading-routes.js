@@ -5,7 +5,7 @@ router.get('/', (req, res) => {
     Heading.findAll({
         attributes: [
             'id',
-            'title',
+            'heading_title',
             'time',
             'project_id'
         ],
@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'title',
+            'heading_title',
             'time',
             'project_id'
         ],
@@ -62,7 +62,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     Heading.create({
-        title: req.body.title
+        heading_title: req.body.heading_title
     })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -73,7 +73,7 @@ router.post('/', (req, res) => {
 
 router.put(':/id', (req, res) => {
     Heading.update({
-        title: req.body.title
+        heading_title: req.body.heading_title
     },
     {
         where: {
