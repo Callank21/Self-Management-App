@@ -1,12 +1,11 @@
 const router = require('express').Router();
-const { Project, Heading, Task } = require('../../models');
+const { Heading, Task } = require('../../models');
 
 router.get('/', (req, res) => {
     Heading.findAll({
         attributes: [
             'id',
             'heading_title',
-            'time',
             'project_id'
         ],
         include: {
@@ -34,7 +33,6 @@ router.get('/:id', (req, res) => {
         attributes: [
             'id',
             'heading_title',
-            'time',
             'project_id'
         ],
         include: {

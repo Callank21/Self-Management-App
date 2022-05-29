@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project, Heading, Task } = require('../../models');
+const { Task } = require('../../models');
 
 router.get('/', (req, res) => {
     Task.findAll({
@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
             'id',
             'desc',
             'time',
-            'project_id'
+            'heading_id'
         ]
     })
     .then(dbCategoryData => {

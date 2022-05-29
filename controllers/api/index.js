@@ -6,6 +6,6 @@ const taskRoutes = require('./tasks-routes');
 
 router.use('/projects', projectRoutes);
 router.use('/headings', headingRoutes);
-router.use('/taskRoutes', taskRoutes);
+router.use('/tasks', taskRoutes);
 
 module.exports = router;

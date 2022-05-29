@@ -5,15 +5,13 @@ router.get('/', (req, res) => {
     Project.findAll({
         attributes: [
             'id',
-            'project_title',
-            'time'
+            'project_title'
         ],
         include: {
             model: Heading,
             attributes: [
                 'id',
                 'heading_title',
-                'time',
                 'project_id'
             ],
             include: {
@@ -41,15 +39,13 @@ router.get('/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'project_title',
-            'time'
+            'project_title'
         ],
         include: {
             model: Heading,
             attributes: [
                 'id',
                 'heading_title',
-                'time',
                 'project_id'
             ],
             include: {

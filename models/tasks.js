@@ -16,8 +16,7 @@ Task.init(
             allowNull: false
         },
         time: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            type: DataTypes.INTEGER
         },
         heading_id: {
             type: DataTypes.INTEGER,
