@@ -14,11 +14,13 @@ const PORT = process.env.PORT || 3001;
 app.engine('handlebars', engine({defaultLayout: 'main'}));
 // Look for files that end with .handlebars
 app.set('view engine', 'handlebars');
+app.use(routes);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
+
 // Looks for style.css
 app.use(express.static('public'));
 
