@@ -65,71 +65,7 @@
 </div>
 
 
-{{!-- {{#if posts.length}}
-<section>
-  <h2>Your Task</h2>
-  <ol>
-    {{#each posts as |post|}}
-    <li>
-      {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
-    </li>
-    {{/each}}
-  </ol>
-</section>
-{{/if}}
-
-<script>
-    async function newFormHandler(event) {
-  event.preventDefault();
-
-  const title = document.querySelector('input[name="post-title"]').value;
-  const post_contents = document.querySelector('input[name="post-contents"]').value;
-
-  const response = await fetch(`/api/posts`, {
-    method: 'POST',
-    body: JSON.stringify({
-      title,
-      post_contents
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-
-  if (response.ok) {
-    document.location.replace('/dashboard');
-  } else {
-    alert(response.statusText);
-  }
-}
-
-document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
-</script> --}}
-
-
-
-
-<script>
-    /*Toggle dropdown list*/
-    function toggleDD(myDropMenu) {
-        document.getElementById(myDropMenu).classList.toggle("invisible");
-    }
-    
-    
-    // Close the dropdown menu if the user clicks outside of it
-    window.onclick = function(event) {
-        if (!event.target.matches('.drop-button') && !event.target.matches('.drop-search')) {
-            var dropdowns = document.getElementsByClassName("dropdownlist");
-            for (var i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (!openDropdown.classList.contains('invisible')) {
-                    openDropdown.classList.add('invisible');
-                }
-            }
-        }
-    }
-</script>
+<script src="/javascript/dashboard.js"></script>
 
 
 </body>
