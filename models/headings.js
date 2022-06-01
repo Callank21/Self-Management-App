@@ -4,31 +4,31 @@ const sequelize = require('../config/connection');
 class Heading extends Model {}
 
 Heading.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        heading_title: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-       project_id: {
-           type: DataTypes.INTEGER,
-           references: {
-               model: 'project',
-               key: 'id'
-           }
-       }
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'heading'
-    }
+    heading_title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    project_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'project',
+        key: 'id',
+      },
+    },
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'heading',
+  }
 );
 
 module.exports = Heading;

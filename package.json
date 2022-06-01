@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "tailwind:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
     "start": "npm run tailwind:css && node server.js",
     "seed": "node seeds/index.js"
@@ -33,7 +33,10 @@
     "mysql2": "^2.3.3",
     "postcss": "^8.4.14",
     "postcss-cli": "^9.1.0",
-    "sequelize": "^6.20.0",
+    "sequelize": "^6.20.1",
     "tailwindcss": "^3.0.24"
+  },
+  "devDependencies": {
+    "jest": "^28.1.0"
   }
 }

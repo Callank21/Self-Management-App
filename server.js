@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+const express = require('express');
+const { engine } = require('express-handlebars');
+const routes = require('./controllers');
+const sequelize = require('./config/connection');
+>>>>>>> feature/authentication
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
@@ -37,8 +44,8 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.use(require('./controllers/'));
 // Lister
-sequelize.sync({ force: false }).then(() =>{
-app.listen(PORT, () => {
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => {
     console.log(`App listening on port http://localhost:${PORT}!`);
   });
 });

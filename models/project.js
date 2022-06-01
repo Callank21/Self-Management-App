@@ -4,24 +4,24 @@ const sequelize = require('../config/connection');
 class Project extends Model {}
 
 Project.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        project_title: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
     },
-    {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'project'
-    }
-)
+    project_title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'project',
+  }
+);
 
 module.exports = Project;
