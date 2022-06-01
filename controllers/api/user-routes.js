@@ -44,7 +44,7 @@ router.post('/', (req, res) => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
         req.session.firstname = dbUserData.firstname;
-        req.session.firstname = dbUserData.lastname;
+        req.session.lastname = dbUserData.lastname;
         req.session.loggedIn = true;
 
         res.json(dbUserData);
@@ -57,6 +57,7 @@ router.post('/', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
+  console.log('hello');
   User.findOne({
     where: {
       email: req.body.email,
@@ -75,9 +76,9 @@ router.post('/login', (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.firstname;
-      req.session.username = dbUserData.lastname;
+      req.session.id = dbUserData.id;
+      req.session.firstname = dbUserData.firstname;
+      req.session.lastname = dbUserData.lastname;
       req.session.loggedIn = true;
 
       res.json({ user: dbUserData, message: 'You are now logged in!' });
