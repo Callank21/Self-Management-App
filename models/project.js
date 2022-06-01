@@ -4,12 +4,26 @@ const sequelize = require('../config/connection');
 class Project extends Model {}
 
 Project.init(
+<<<<<<< HEAD
   {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+=======
+    {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        project_title: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+>>>>>>> develop
     },
     title: {
       type: DataTypes.STRING,

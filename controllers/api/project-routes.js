@@ -5,15 +5,13 @@ router.get('/', (req, res) => {
     Project.findAll({
         attributes: [
             'id',
-            'title',
-            'time'
+            'project_title'
         ],
         include: {
             model: Heading,
             attributes: [
                 'id',
-                'title',
-                'time',
+                'heading_title',
                 'project_id'
             ],
             include: {
@@ -41,15 +39,13 @@ router.get('/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'title',
-            'time'
+            'project_title'
         ],
         include: {
             model: Heading,
             attributes: [
                 'id',
-                'title',
-                'time',
+                'heading_title',
                 'project_id'
             ],
             include: {
@@ -78,7 +74,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     Project.create({
-        title: req.body.title
+        project_title: req.body.project_title
     })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -89,7 +85,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     Project.update({
-        title: req.body.title
+        project_title: req.body.project_title
     },
     {
         where: {

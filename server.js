@@ -1,5 +1,11 @@
 const express = require('express');
+<<<<<<< HEAD
 const { engine } = require('express-handlebars');
+=======
+const {engine}  = require('express-handlebars');
+const routes = require('./controllers');
+const sequelize = require('./config/connection');
+>>>>>>> develop
 const path = require('path');
 
 // Sets up the Express-Handlebars
@@ -13,6 +19,10 @@ app.engine('handlebars', engine({ defaultLayout: 'main' }));
 // Look for files that end with .handlebars
 app.set('view engine', 'handlebars');
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(routes);
 // Looks for style.css
 app.use(express.static('public'));
 
@@ -52,6 +62,13 @@ app.get('/signup', function (req, res) {
 // =============================================================
 
 // Lister
+sequelize.sync({ force: false }).then(() =>{
 app.listen(PORT, () => {
+<<<<<<< HEAD
   console.log(`App listening on port http://localhost:${PORT}!`);
 });
+=======
+    console.log(`App listening on port http://localhost:${PORT}!`);
+  });
+});
+>>>>>>> develop

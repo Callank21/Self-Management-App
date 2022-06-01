@@ -1,12 +1,11 @@
 const router = require('express').Router();
-const { Project, Heading, Task } = require('../../models');
+const { Heading, Task } = require('../../models');
 
 router.get('/', (req, res) => {
     Heading.findAll({
         attributes: [
             'id',
-            'title',
-            'time',
+            'heading_title',
             'project_id'
         ],
         include: {
@@ -33,8 +32,7 @@ router.get('/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'title',
-            'time',
+            'heading_title',
             'project_id'
         ],
         include: {
@@ -62,7 +60,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     Heading.create({
-        title: req.body.title
+        heading_title: req.body.heading_title
     })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
@@ -73,7 +71,7 @@ router.post('/', (req, res) => {
 
 router.put(':/id', (req, res) => {
     Heading.update({
-        title: req.body.title
+        heading_title: req.body.heading_title
     },
     {
         where: {
