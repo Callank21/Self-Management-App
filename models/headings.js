@@ -4,33 +4,23 @@ const sequelize = require('../config/connection');
 class Heading extends Model {}
 
 Heading.init(
-<<<<<<< HEAD
   {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-=======
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        heading_title: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-       project_id: {
-           type: DataTypes.INTEGER,
-           references: {
-               model: 'project',
-               key: 'id'
-           }
-       }
->>>>>>> develop
+    },
+    heading_title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    project_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'project',
+        key: 'id',
+      },
     },
     title: {
       type: DataTypes.STRING,

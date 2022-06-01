@@ -1,11 +1,7 @@
 const express = require('express');
-<<<<<<< HEAD
 const { engine } = require('express-handlebars');
-=======
-const {engine}  = require('express-handlebars');
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
->>>>>>> develop
 const path = require('path');
 
 // Sets up the Express-Handlebars
@@ -62,13 +58,8 @@ app.get('/signup', function (req, res) {
 // =============================================================
 
 // Lister
-sequelize.sync({ force: false }).then(() =>{
-app.listen(PORT, () => {
-<<<<<<< HEAD
-  console.log(`App listening on port http://localhost:${PORT}!`);
-});
-=======
+sequelize.sync({ force: true }).then(() => {
+  app.listen(PORT, () => {
     console.log(`App listening on port http://localhost:${PORT}!`);
   });
 });
->>>>>>> develop
