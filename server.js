@@ -1,63 +1,41 @@
-const express = require('express');
-const { engine } = require('express-handlebars');
-const routes = require('./controllers');
-const sequelize = require('./config/connection');
 const path = require('path');
+const express = require('express');
+const session = require('express-session');
+const exphbs = require('express-handlebars');
 
-// Sets up the Express-Handlebars
-// =============================================================
 const app = express();
-// PORT
 const PORT = process.env.PORT || 3001;
 
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const sess = {
+  secret: 'Biology is superficial, intelligence is artificial',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+};
+
+app.use(session(sess));
+
+const helpers = require('./utils/helpers');
+
+const hbs = exphbs.create({ helpers });
+
 // Have engine use handlebars template
-app.engine('handlebars', engine({ defaultLayout: 'main' }));
+app.engine('handlebars', hbs.engine);
 // Look for files that end with .handlebars
 app.set('view engine', 'handlebars');
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
+app.use(express.urlencoded({ extended: false }));
 // Looks for style.css
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes & Renders homepage.handlebars
-app.get('/', function (req, res) {
-  res.render('homepage', {
-    title: 'Home Page',
-    // can pass more values here(eg.): "name: 'lorem'"
-  });
-});
-
-// Routes & Renders dashboard.handlebars
-app.get('/dashboard', function (req, res) {
-  res.render('dashboard', {
-    title: 'My Dashboard',
-  });
-});
-
-app.get('/login', function (req, res) {
-  res.render('login', {
-    title: 'Log In',
-  });
-});
-
-app.get('/signup', function (req, res) {
-  res.render('signup', {
-    title: 'Sign Up',
-  });
-});
-
-// // Routes & Renders dashboard.handlebars
-// app.get('/header', function (req, res) {
-//     res.render('header', {
-//         title: ''
-//     });
-// });
-// =============================================================
-
-app.use(routes);
-
+app.use(require('./controllers/'));
 // Lister
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
