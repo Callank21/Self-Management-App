@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-=======
-const express = require('express');
-const { engine } = require('express-handlebars');
-const routes = require('./controllers');
-const sequelize = require('./config/connection');
->>>>>>> feature/authentication
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
