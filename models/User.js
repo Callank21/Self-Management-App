@@ -6,7 +6,7 @@ const sequelize = require('../config/connection');
 class User extends Model {
   // set up method to run on instance data (per user) to check password
   checkPassword(loginPw) {
-    console.log("we are inside password check!")
+    console.log('we are inside password check!');
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
@@ -53,7 +53,10 @@ User.init(
       },
 
       async beforeUpdate(updatedUserData) {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password,10);
+        updatedUserData.password = await bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
         return updatedUserData;
       },
     },
