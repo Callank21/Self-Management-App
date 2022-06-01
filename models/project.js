@@ -15,20 +15,6 @@ Project.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    //figure out how to take the time values from heading and aggregate them into a single number (in minutes)
-    time: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'heading',
-        key: 'time',
-      },
-    },
   },
   {
     sequelize,

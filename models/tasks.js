@@ -25,21 +25,6 @@ Task.init(
         key: 'id',
       },
     },
-    desc: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    time: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    heading_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'heading',
-        key: 'id',
-      },
-    },
   },
   {
     sequelize,
