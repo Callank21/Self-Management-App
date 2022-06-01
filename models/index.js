@@ -1,6 +1,7 @@
 const Project = require('./project');
 const Heading = require('./headings');
 const Task = require('./tasks');
+const User = require('./User');
 
 //Heading belongsto Project
 Heading.belongsTo(Project, {
@@ -22,4 +23,4 @@ Heading.hasMany(Task, {
   foreignKey: 'heading_id',
 });
 
-module.exports = { Project, Heading, Task };
+module.exports = { Project, Heading, Task, User };
