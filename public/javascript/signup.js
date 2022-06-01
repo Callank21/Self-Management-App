@@ -29,4 +29,3 @@ async function signupFormHandler(event) {
 document
   .querySelector('.form-horizontal')
   .addEventListener('submit', signupFormHandler);
-
