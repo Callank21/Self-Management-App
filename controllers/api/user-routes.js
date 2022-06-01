@@ -22,7 +22,6 @@ router.get('/:id', (req, res) => {
   })
     .then((dbUserData) => {
       if (!dbUserData) {
-        console.log("why am I over here??")
         res.status(404).json({ message: 'No user found with this id' });
         return;
       }
@@ -58,13 +57,11 @@ router.post('/', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  console.log('hello');
   User.findOne({
     where: {
       email: req.body.email,
     },
   }).then((dbUserData) => {
-    console.log("made it here")
     if (!dbUserData) {
       console.log("db user error!")
       res.status(400).json({ message: 'No user with that email address!' });
@@ -72,15 +69,12 @@ router.post('/login', (req, res) => {
     }
 
     const validPassword = dbUserData.checkPassword(req.body.password);
-console.log('made it past password!')
     if (!validPassword) {
-      console.log("uh oh, not valid password!")
       res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
 
     req.session.save(() => {
-      console.log("you've made it to save!")
       req.session.id = dbUserData.id;
       req.session.firstname = dbUserData.firstname;
       req.session.lastname = dbUserData.lastname;
