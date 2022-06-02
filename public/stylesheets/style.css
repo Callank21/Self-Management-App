@@ -812,6 +812,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pb-4 {
   padding-bottom: 1rem;
 }
+.pr-3 {
+  padding-right: 0.75rem;
+}
 .pt-9 {
   padding-top: 2.25rem;
 }
@@ -838,6 +841,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 .text-6xl {
   font-size: 3.75rem;

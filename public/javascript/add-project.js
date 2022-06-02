@@ -5,10 +5,9 @@ async function newFormHandler(event) {
     const heading_title = document.querySelector('#heading_title').value;
     const desc = document.querySelector('#desc').value;
     const time = document.querySelector('#time').value;
-
+    let projectResponse;
     if (project_title) {
-        console.log(project_title);
-        const response = await fetch(`/api/projects`, {
+        projectResponse = await fetch(`/api/projects`, {
            method: 'POST',
            body: JSON.stringify({
                project_title
@@ -17,15 +16,16 @@ async function newFormHandler(event) {
                'Content-Type': 'application/json'
            } 
         });
-        if (response.ok) {
-            document.location.replace('/dashboard/');
+        /*if (response.ok) {
+            document.location.replace('/dashboard');
           } else {
             alert(response.statusText);
           }
+          */
     }
 
     if (heading_title) {
-        console.log(heading_title);
+        console.log(projectResponse);
         const response = await fetch(`/api/headings`, {
             method: 'POST',
             body: JSON.stringify({
@@ -36,14 +36,12 @@ async function newFormHandler(event) {
             } 
          });
          if (response.ok) {
-            document.location.replace('/dashboard/');
+            document.location.replace('/dashboard');
           } else {
             alert(response.statusText);
           }
     }
     if (desc && time) {
-        console.log(desc);
-        console.log(time);
         const response = await fetch(`/api/tasks`, {
             method: 'POST',
             body: JSON.stringify({
@@ -55,7 +53,7 @@ async function newFormHandler(event) {
             } 
          });
          if (response.ok) {
-            document.location.replace('/dashboard/');
+            document.location.replace('/dashboard');
           } else {
             alert(response.statusText);
           }
