@@ -35,6 +35,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   Task.create({
     desc: req.body.desc,
+    time: req.body.time
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
