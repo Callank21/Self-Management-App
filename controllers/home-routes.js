@@ -27,6 +27,12 @@ router.get('/dashboard', function (req, res) {
   });
 });
 
+router.get('/calendar', function (req, res) {
+  res.render('calendar', {
+    title: 'My Calendar',
+  });
+});
+
 router.get('/dashboard', (req, res) => {
   Project.findAll({
     attributes: ['id', 'project_title'],
