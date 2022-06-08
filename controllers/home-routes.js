@@ -21,7 +21,13 @@ router.get('/signup', function (req, res) {
   });
 });
 
-router.get('/dashboard', function (req, res) {
+router.get('/calendar', function (req, res) {
+  res.render('calendar', {
+    title: 'My Calendar',
+  });
+});
+
+router.get('/dashboard', (req, res) => {
   Project.findAll({
     attributes: ['id', 'project_title'],
     include: {
@@ -37,42 +43,14 @@ router.get('/dashboard', function (req, res) {
       const projects = dbCategoryData.map((project) =>
         project.get({ plain: true })
       );
+      const title = { title: 'My Dashboard' };
       console.log(projects[0].headings[0].tasks);
-      res.render(
-        'dashboard',
-        { projects }
-
-        // title: 'My Dashboard'
-      );
+      res.render('dashboard', { projects, title });
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
 });
-
-// router.get('/dashboard', (req, res) => {
-// Project.findAll({
-//   attributes: ['id', 'project_title'],
-//   include: {
-//     model: Heading,
-//     attributes: ['id', 'heading_title', 'project_id'],
-//     include: {
-//       model: Task,
-//       attributes: ['id', 'desc', 'time', 'heading_id'],
-//     },
-//   },
-// })
-//     .then((dbCategoryData) => {
-//       const projects = dbCategoryData.map((project) =>
-//         project.get({ plain: true })
-//       );
-//       res.render('dashboard', { projects });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
 
 module.exports = router;
