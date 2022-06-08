@@ -43,9 +43,9 @@ router.get('/dashboard', (req, res) => {
       const projects = dbCategoryData.map((project) =>
         project.get({ plain: true })
       );
-      const title = { title: 'My Dashboard' };
+      // const title = { title: 'My Dashboard' };
       console.log(projects[0].headings[0].tasks);
-      res.render('dashboard', { projects, title });
+      res.render('dashboard', { projects });
     })
     .catch((err) => {
       console.log(err);
