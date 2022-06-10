@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const {addHeadingTime} = require('../../lib/database');
 const { Heading, Task } = require('../../models');
 
 router.get('/', (req, res) => {
@@ -51,10 +52,39 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put(':/id', (req, res) => {
+router.put('/:id', (req, res) => {
   Heading.update(
     {
       heading_title: req.body.heading_title,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((dbCategoryData) => {
+      if (!dbCategoryData) {
+        res.status(404).json({ message: 'No heading found with this id' });
+        return;
+      }
+      res.json(dbCategoryData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get('addTime/:id', (req, res) => {
+  addHeadingTime(req.params.id);
+  return;
+});
+
+router.put('time/:id', (req, res) => {
+  Heading.update(
+    {
+      time: req.body.time,
     },
     {
       where: {
