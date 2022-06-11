@@ -1,10 +1,9 @@
 const router = require('express').Router();
-const {addHeadingTime} = require('../../lib/database');
-const { Heading, Task } = require('../../models');
+const { Heading, Task, Project } = require('../../models');
 
 router.get('/', (req, res) => {
   Heading.findAll({
-    attributes: ['id', 'heading_title', 'project_id'],
+    attributes: ['id', 'heading_title', 'time', 'project_id'],
     include: {
       model: Task,
       attributes: ['id', 'desc', 'time', 'heading_id'],
@@ -22,7 +21,7 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ['id', 'heading_title', 'project_id'],
+    attributes: ['id', 'heading_title', 'time', 'project_id'],
     include: {
       model: Task,
       attributes: ['id', 'desc', 'time', 'heading_id'],
@@ -76,12 +75,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.get('addTime/:id', (req, res) => {
-  addHeadingTime(req.params.id);
-  return;
-});
-
-router.put('time/:id', (req, res) => {
+router.put('/time/:id', (req, res) => {
   Heading.update(
     {
       time: req.body.time,
@@ -118,6 +112,24 @@ router.delete('/:id', (req, res) => {
       }
       res.json(dbCategoryData);
     })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get('/projects/:id', (req, res) => {
+  Heading.findAll({
+    attributes: ['time'],
+    include: {
+      model: Project,
+      attributes:['id'],
+      where: {
+        id: req.params.id
+      }
+    }
+  })
+  .then((response) => res.json(response))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);

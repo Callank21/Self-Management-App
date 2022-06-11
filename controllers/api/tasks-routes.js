@@ -13,34 +13,6 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/time', (req, res) => {
-  Task.sum('time').then(sum => {
-    res.json(sum)
-  })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-router.get('/headings/:id', (req, res) => {
-  Task.findAll({
-    attributes: ['time'],
-      include: {
-        model: Heading,
-        attributes: ['id'],
-        where: {
-          id: req.params.id
-        }
-      }
-  })
-  .then((response) => res.json(response))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
 router.get('/:id', (req, res) => {
   Task.findOne({
     where: {
@@ -110,6 +82,24 @@ router.delete('/:id', (req, res) => {
       }
       res.json(dbCategoryData);
     })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get('/headings/:id', (req, res) => { // returns a list of time attributes for tasks at a specific heading
+  Task.findAll({
+    attributes: ['time'],
+      include: {
+        model: Heading,
+        attributes: ['id'],
+        where: {
+          id: req.params.id
+        }
+      }
+  })
+  .then((response) => res.json(response))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
