@@ -1,5 +1,5 @@
 async function addTaskTime() {
-  var id = 1;
+  var id = 5;
     const response = await fetch(`/api/tasks/headings/${id}`, {
         method: 'GET'
       });
@@ -11,7 +11,7 @@ async function addTaskTime() {
             sum += taskArray[i].time;
         }
         console.log(sum);
-        const headingTime = fetch(`/api/headings/time/${id}`, {
+        fetch(`/api/headings/time/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 time: sum
@@ -20,13 +20,12 @@ async function addTaskTime() {
                 'Content-Type': 'application/json'
               }
         })
-        addHeadingTime()
     });
+    await addHeadingTime();
 }
 
 async function addHeadingTime() {
-  id = 1;
-  console.log('addHeadingTime')
+  id = 2;
     const response = await fetch(`/api/headings/projects/${id}`, {
         method: 'GET'
       });
@@ -37,7 +36,7 @@ async function addHeadingTime() {
             sum += headingArray[i].time;
         }
         console.log(sum);
-        const projectTime = fetch(`/api/projects/time/${id}`, {
+        fetch(`/api/projects/time/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 time: sum

@@ -85,30 +85,6 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.put('time/:id', (req, res) => {
-  Project.update(
-    {
-      time: req.body.time,
-    },
-    {
-      where: {
-        id: req.params.id,
-      },
-    }
-  )
-    .then((dbCategoryData) => {
-      if (!dbCategoryData) {
-        res.status(404).json({ message: 'No project found with this id' });
-        return;
-      }
-      res.json(dbCategoryData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
 router.delete('/:id', (req, res) => {
   Project.destroy({
     where: {
