@@ -1,17 +1,19 @@
 {{#each headings}}
-  <div
-    class='pl-6 bg-cyan-700 mt-3 mb-6 block w-7/12 p-4 border rounded-lg'
-  ><span class='text-3xl text-white sm:text-md font-light'>
-      {{heading_title}}
-    </span>
-  </div>
-  {{#each tasks}}
+  <div heading="{{id}}">
     <div
-      class='text-3xl bg-sky-500 mt-3 mb-6 block w-10/12 p-4 text-white border rounded-lg sm:text-md font-light'
-    >
-      <span class='pr-3 mr-3'>{{desc}}</span><span
-        class='ml-3 pl-3'
-      >{{time}}</span>
+      class='pl-6 bg-cyan-700 mt-3 mb-6 block w-7/12 p-4 border rounded-lg'
+    ><span class='text-3xl text-white sm:text-md font-light'>
+        {{heading_title}}
+      </span>
     </div>
-  {{/each}}
+    {{#each tasks}}
+      <div
+        class='text-3xl bg-sky-500 mt-3 mb-6 block w-10/12 p-4 text-white border rounded-lg sm:text-md font-light'
+      >
+        <span class='pr-3 mr-3'>{{desc}}</span><span
+          class='ml-3 pl-3'
+        >{{time}}</span>
+      </div>
+    {{/each}}
+  </div>
 {{/each}}
