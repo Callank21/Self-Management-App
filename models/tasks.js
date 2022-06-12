@@ -17,6 +17,7 @@ Task.init(
     },
     time: {
       type: DataTypes.INTEGER,
+      allowNull: false
     },
     // project_id: {
     //   type: DataTypes.INTEGER,

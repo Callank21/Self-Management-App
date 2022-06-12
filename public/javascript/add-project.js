@@ -1,4 +1,5 @@
 async function newFormHandler(event) {
+  console.log('newformhandler');
   event.preventDefault();
 
   const project_title = document.querySelector('#project_title').value;
