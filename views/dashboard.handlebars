@@ -50,7 +50,7 @@
     </nav>
   </header>
 
-  <div class='md:flex mb-4 ml-7 mt-10 mr-7 rounded mx-auto'>
+  {{!-- <div class='md:flex mb-4 ml-7 mt-10 mr-7 rounded mx-auto'>
 
     <div class='w-full lg:w-1/5 rounded overflow-hidden relative flex flex-col'>
       <form class='bg-gray-700 rounded-lg new-post-form' id='new-project-form'>
@@ -107,9 +107,13 @@
         </div>
 
       </form>
-    </div>
+    </div> --}}
     
-    {{> projects }}
+    <div class='flex w-full justify-start flex-wrap'>
+       {{> projects }}
+    </div>
+
+   
 
  
     <div class='rounded overflow-hidden mt-10 mr-3'>
