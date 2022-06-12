@@ -2,6 +2,31 @@ const router = require('express').Router();
 const { json } = require('express/lib/response');
 const { Task, Project, Heading } = require('../../models');
 
+// Create helper function to retrieve all tasks and get the sum of all times
+const addTaskTime = async (heading) => {
+  // Get an array of task times and add them
+  const taskTimes = await Task.findAll({
+    attributes: ["time"],
+    where: {
+      heading_id: heading
+    }
+  });
+
+  // Update heading time
+
+  // Get heading's project id
+  const project = await Heading.findOne({
+    attributes: ["project_id"],
+    where: {
+      id: heading
+    }
+  });
+
+  // Get all heading times with the project id and add them
+
+  // Update project time
+};
+
 router.get('/', (req, res) => {
   Task.findAll({
     attributes: ['id', 'desc', 'time', 'heading_id'],
@@ -38,7 +63,10 @@ router.post('/', (req, res) => {
     desc: req.body.desc,
     time: req.body.time
   })
-    .then((dbPostData) => res.json(dbPostData))
+    .then((dbPostData) => {
+      // Run helper function that adds up all times
+      res.json(dbPostData)
+    })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -49,6 +77,7 @@ router.put(':/id', (req, res) => {
   Task.update(
     {
       desc: req.body.desc,
+      time: req.body.time
     },
     {
       where: {
@@ -61,6 +90,7 @@ router.put(':/id', (req, res) => {
         res.status(404).json({ message: 'No task found with this id' });
         return;
       }
+      // Run helper function that adds up all times
       res.json(dbCategoryData);
     })
     .catch((err) => {
