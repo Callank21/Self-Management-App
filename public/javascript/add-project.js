@@ -12,24 +12,24 @@ document
 async function projectTitleSubmit(event) {
   event.preventDefault();
 
-  //   const project_title = document.querySelector('#Project_title').value;
+    const project_title = document.querySelector('#Project_title').value;
 
-  //   if (project_title) {
-  //     const response = await fetch(`/api/projects`, {
-  //       method: 'POST',
-  //       body: JSON.stringify({
-  //         project_title,
-  //       }),
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     });
-  //     if (response.ok) {
-  //       document.location.replace('/dashboard');
-  //     } else {
-  //       alert(response.statusText);
-  //     }
-  //   }
+    if (project_title) {
+      const response = await fetch(`/api/projects`, {
+        method: 'POST',
+        body: JSON.stringify({
+          project_title,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.ok) {
+        document.location.replace('/dashboard');
+      } else {
+        alert(response.statusText);
+      }
+    }
   document.querySelector('#ProjectSubmitForm').style.display = 'none';
   document.querySelector('#HeadingDisplay').classList.remove('hidden');
 }

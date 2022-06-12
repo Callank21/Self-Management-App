@@ -11,7 +11,7 @@ const addTaskTime = async (heading) => {
       heading_id: heading
     }
   });
-
+console.log(taskTimes)
   // Update heading time
 
   // Get heading's project id
@@ -64,7 +64,7 @@ router.post('/', (req, res) => {
     time: req.body.time
   })
     .then((dbPostData) => {
-      // Run helper function that adds up all times
+      addTaskTime();
       res.json(dbPostData)
     })
     .catch((err) => {
@@ -91,6 +91,7 @@ router.put(':/id', (req, res) => {
         return;
       }
       // Run helper function that adds up all times
+      addTaskTime();
       res.json(dbCategoryData);
     })
     .catch((err) => {
