@@ -22,6 +22,13 @@ Heading.init(
         key: 'id',
       },
     },
+    task_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'task',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,

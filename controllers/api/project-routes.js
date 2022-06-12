@@ -3,7 +3,7 @@ const { Project, Heading, Task } = require('../../models');
 
 router.get('/', (req, res) => {
   Project.findAll({
-    attributes: ['id', 'project_title'],
+    attributes: ['id', 'project_title', 'user_id'],
     include: {
       model: Heading,
       attributes: ['id', 'heading_title', 'project_id'],
@@ -51,7 +51,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   Project.create({
     project_title: req.body.project_title,
-    user_id: req.session.user_id
+    user_id: req.session.user_id,
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
