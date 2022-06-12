@@ -1,5 +1,8 @@
 async function addTaskTime() {
   var id = 5;
+  // Retrieve task id from task div
+  // Use .parentElement property to get heading id from heading div
+  // Use .parentElement property to get project id from project div
     const response = await fetch(`/api/tasks/headings/${id}`, {
         method: 'GET'
       });
