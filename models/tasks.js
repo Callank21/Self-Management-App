@@ -19,13 +19,20 @@ Task.init(
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    heading_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'heading',
-        key: 'id',
-      },
-    },
+    // project_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'project',
+    //     key: 'id',
+    //   },
+    // },
+    // heading_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'heading',
+    //     key: 'id',
+    //   },
+    // },
   },
   {
     sequelize,

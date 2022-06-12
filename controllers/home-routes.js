@@ -29,7 +29,7 @@ router.get('/calendar', function (req, res) {
 
 router.get('/dashboard', (req, res) => {
   Project.findAll({
-    attributes: ['id', 'project_title'],
+    attributes: ['id', 'project_title', 'user_id'],
     include: {
       model: Heading,
       attributes: ['id', 'heading_title', 'project_id'],
