@@ -15,6 +15,11 @@ Project.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    time: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 15
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
