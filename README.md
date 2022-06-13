@@ -29,7 +29,11 @@ Callan Keesling, Luis Gutierrez, Seungjin Lee, and Stephanie Rodriguez
 
 ## 🔗 Link
 
-[[Project](https://github.com/Callank21/Self-Management-App)]
+Github repository
+[[Github](https://github.com/Callank21/Self-Management-App)]
+
+Heroku
+[[Heroku](https://self-management-app.herokuapp.com/)]
 
 ## Screenshots
 
