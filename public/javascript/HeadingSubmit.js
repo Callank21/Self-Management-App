@@ -2,7 +2,9 @@ async function HeadingTitleSubmit(event) {
   event.preventDefault();
 
   const heading_title = document.querySelector('#Heading_title').value;
-  const projectId = document.querySelector('#data-project-id').value;
+  const projectId = document
+    .querySelector('#project')
+    .getAttribute('data-project-id');
   console.log(projectId);
 
   if (heading_title) {
