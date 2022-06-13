@@ -43,6 +43,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   Heading.create({
     heading_title: req.body.heading_title,
+    project_id: req.body.project_id,
   })
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => {
@@ -123,13 +124,13 @@ router.get('/projects/:id', (req, res) => {
     attributes: ['time'],
     include: {
       model: Project,
-      attributes:['id'],
+      attributes: ['id'],
       where: {
-        id: req.params.id
-      }
-    }
+        id: req.params.id,
+      },
+    },
   })
-  .then((response) => res.json(response))
+    .then((response) => res.json(response))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);

@@ -1,10 +1,16 @@
 function headingFormHandler(event) {
   event.preventDefault();
 
-  document.querySelector('#HeadingDisplay').style.display = 'none';
-  document.querySelector('#HeadingSubmitForm').classList.remove('hidden');
+  if (event.target.matches('#headingBtn')) {
+    const headingBtnId = event.target.getAttribute('data-headingbtn-id');
+    console.log(headingBtnId);
+
+    const headingSubmit = document.querySelector(
+      '[data-hiddenheading-id="' + headingBtnId + '"]'
+    );
+
+    headingSubmit.classList.remove('hidden');
+  }
 }
 
-document
-  .querySelector('#HeadingPlusBtn')
-  .addEventListener('click', headingFormHandler);
+document.addEventListener('click', headingFormHandler);

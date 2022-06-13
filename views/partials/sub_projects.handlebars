@@ -1,20 +1,22 @@
-{{#each headings}}
-  {{!-- <div heading='{{id}}'> --}}
-  <div class='pl-2 my-3 mb-6 bg-cyan-700 block p-2 rounded-lg'><span
-      class='text-2xl text-white sm:text-md font-light'
-    >
-      {{heading_title}}
-    </span>
-    {{#each tasks}}
-      <div
-        class='items-center justify-between flex text-xl bg-sky-500 mt-3 block p-2 text-white rounded-lg sm:text-md font-light'
+{{#each projects}}
+  {{#each headings}}
+    {{!-- <div heading='{{id}}'> --}}
+    <div class='pl-2 my-3 mb-6 bg-cyan-700 block p-2 rounded-lg'><span
+        class='text-2xl text-white sm:text-md font-light'
       >
-        <div>{{desc}}</div><div class='text-gray-700 text-lg'>Time:
-          {{time}}
+        {{heading_title}}
+      </span>
+      {{#each tasks}}
+        <div
+          class='items-center justify-between flex text-xl bg-sky-500 mt-3 block p-2 text-white rounded-lg sm:text-md font-light'
+        >
+          <div>{{desc}}</div><div class='text-gray-700 text-lg'>Time:
+            {{time}}
+          </div>
         </div>
-      </div>
-    {{/each}}
-  </div>
+      {{/each}}
+    </div>
 
-  {{! </div> }}
+    {{! </div> }}
+  {{/each}}
 {{/each}}
