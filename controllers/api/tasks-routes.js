@@ -76,7 +76,8 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   Task.create({
     desc: req.body.desc,
-    time: req.body.time
+    time: req.body.time,
+    heading_id: req.body.heading_id,
   })
     .then((dbPostData) => {
       // addTaskTime(req.body.heading_id);
@@ -92,14 +93,15 @@ router.put('/:id', (req, res) => {
   Task.update(
     {
       desc: req.body.desc,
-      time: req.body.time
+      time: req.body.time,
     },
     {
       where: {
         id: req.params.id,
       },
     }
-  ) .then()
+  )
+    .then()
     .then((dbCategoryData) => {
       if (!dbCategoryData) {
         res.status(404).json({ message: 'No task found with this id' });
@@ -134,18 +136,19 @@ router.delete('/:id', (req, res) => {
     });
 });
 
-router.get('/headings/:id', (req, res) => { // returns a list of time attributes for tasks at a specific heading
+router.get('/headings/:id', (req, res) => {
+  // returns a list of time attributes for tasks at a specific heading
   Task.findAll({
     attributes: ['time'],
-      include: {
-        model: Heading,
-        attributes: ['id'],
-        where: {
-          id: req.params.id
-        }
-      }
+    include: {
+      model: Heading,
+      attributes: ['id'],
+      where: {
+        id: req.params.id,
+      },
+    },
   })
-  .then((response) => res.json(response))
+    .then((response) => res.json(response))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);

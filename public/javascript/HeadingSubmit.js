@@ -1,32 +1,31 @@
 async function HeadingTitleSubmit(event) {
   event.preventDefault();
 
-  const heading_title = document.querySelector('#Heading_title').value;
-  const projectId = document.querySelector('#data-project-id').value;
-  console.log(projectId);
+  if (event.target.matches('#headingSubmit')) {
+    const projectId = event.target.getAttribute('data-headingsubmit-id');
 
-  if (heading_title) {
-    const response = await fetch(`/api/headings`, {
-      method: 'POST',
-      body: JSON.stringify({
-        heading_title,
-        project_id: projectId,
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    if (response.ok) {
-      document.location.replace('/dashboard');
-    } else {
-      alert(response.statusText);
+    const heading_title = document.querySelector(
+      '[data-headingtitle-id="' + projectId + '"]'
+    ).value;
+
+    if (heading_title) {
+      const response = await fetch(`/api/headings`, {
+        method: 'POST',
+        body: JSON.stringify({
+          heading_title,
+          project_id: projectId,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.ok) {
+        document.location.replace('/dashboard');
+      } else {
+        alert(response.statusText);
+      }
     }
   }
-
-  // document.querySelector('#HeadingSubmitForm').style.display = 'none';
-  // document.querySelector('#TaskDisplay').classList.remove('hidden');
 }
 
-document
-  .querySelector('#HeadingSubmit')
-  .addEventListener('click', HeadingTitleSubmit);
+document.addEventListener('click', HeadingTitleSubmit);

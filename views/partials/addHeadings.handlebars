@@ -5,7 +5,7 @@
       class='pt-0 w-96 m-2 px-3 py-4 border-gray-700 rounded-lg bg-gray-700 shadow-lg'
     >
 
-    <div data-project-id={{id}} class='p-2 pt-0 mb-6 block border-b-4 flex justify-between items-center'>
+    <div data-project-id={{id}} id='project' class='p-2 pt-0 mb-6 block border-b-4 flex justify-between items-center'>
      <div
         class='text-3xl text-center font-medium drop-shadow-xl text-gray-100'
       >{{project_title}}</div>
@@ -22,9 +22,11 @@
     </div>
 
     </div>
-      {{> submitForm title='Heading' }}
-     
-      {{> sub_projects }}    
+
+{{> sub_projects }}  
+
+{{> headingSubmit title='Heading' hidden='hidden' }}   
+        
     
       {{!-- <div class='text-gray-400 text-lg'><a href='#'>Edit Task</a></div>
       <div class='text-gray-400'><a href='#'><svg

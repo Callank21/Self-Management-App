@@ -1,7 +1,6 @@
 
   if (event.target.matches('#headingBtn')) {
     const headingBtnId = event.target.getAttribute('data-headingbtn-id');
-    console.log(headingBtnId);
 
     const headingSubmit = document.querySelector(
       '[data-hiddenheading-id="' + headingBtnId + '"]'
