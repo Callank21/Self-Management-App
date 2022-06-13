@@ -3,29 +3,44 @@ const { json } = require('express/lib/response');
 const { Task, Project, Heading } = require('../../models');
 
 // Create helper function to retrieve all tasks and get the sum of all times
-const addTaskTime = async (heading) => {
-  // Get an array of task times and add them
-  const taskTimes = await Task.findAll({
-    attributes: ["time"],
-    where: {
-      heading_id: heading
-    }
-  });
-console.log(taskTimes)
-  // Update heading time
+// async function addTaskTime(heading) {
+//   // Get an array of task times and add them
+//   const taskTimes = await Task.findAll({
+//     attributes: ["time"],
+//     where: {
+//       heading_id: heading
+//     }
+//   })
+//   taskTimes.json().then((taskArray) => {
+//     var sum = 0;
+//     console.log(sum);
+//     for (let i = 0; i < taskArray.length; i++) {
+//       sum += taskArray[i].time;
+//     }
+//     console.log(sum);
+//     fetch(`/api/headings/time/${id}`, {
+//       method: 'PUT',
+//       body: JSON.stringify({
+//         time: sum,
+//       }),
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     });
+//   })
+//   // Update heading time
 
-  // Get heading's project id
-  const project = await Heading.findOne({
-    attributes: ["project_id"],
-    where: {
-      id: heading
-    }
-  });
+//   // Get heading's project id
+//   const project = await Heading.findOne({
+//     attributes: ["project_id"],
+//     where: {
+//       id: heading
+//     }
+//   });
+//   // Get all heading times with the project id and add them
 
-  // Get all heading times with the project id and add them
-
-  // Update project time
-};
+//   // Update project time
+// };
 
 router.get('/', (req, res) => {
   Task.findAll({
@@ -64,7 +79,7 @@ router.post('/', (req, res) => {
     time: req.body.time
   })
     .then((dbPostData) => {
-      addTaskTime();
+      // addTaskTime(req.body.heading_id);
       res.json(dbPostData)
     })
     .catch((err) => {
@@ -73,7 +88,7 @@ router.post('/', (req, res) => {
     });
 });
 
-router.put(':/id', (req, res) => {
+router.put('/:id', (req, res) => {
   Task.update(
     {
       desc: req.body.desc,
@@ -91,7 +106,7 @@ router.put(':/id', (req, res) => {
         return;
       }
       // Run helper function that adds up all times
-      addTaskTime();
+      // addTaskTime(req.body.heading_id);
       res.json(dbCategoryData);
     })
     .catch((err) => {

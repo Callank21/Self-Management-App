@@ -1,5 +1,6 @@
 async function addTaskTime() {
   var id = 5;
+  console.log('hi');
   // Retrieve task id from task div
   // Use .parentElement property to get heading id from heading div
   // Use .parentElement property to get project id from project div
@@ -49,6 +50,6 @@ async function addHeadingTime() {
   });
 }
 
-// document
-//   .querySelector('#edit-task')
-//   .addEventListener('click', addTaskTime);
+document
+  .querySelector('#projectPlusBtn')
+  .addEventListener('click', addTaskTime);

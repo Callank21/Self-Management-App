@@ -9,6 +9,5 @@
 
     headingSubmit.classList.remove('hidden');
   }
-}
 
 document.addEventListener('click', headingFormHandler);
