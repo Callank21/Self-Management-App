@@ -10,13 +10,13 @@ router.get('/', (req, res) => {
       attributes: ['id', 'project_title', 'time'],
       include: {
         model: Heading,
-      attributes: ['id', 'heading_title', 'time', 'project_id'],
-      include: {
-        model: Task,
-        attributes: ['id', 'desc', 'time', 'heading_id'],
+        attributes: ['id', 'heading_title', 'time', 'project_id'],
+        include: {
+          model: Task,
+          attributes: ['id', 'desc', 'time', 'heading_id'],
         },
-      }
-    }
+      },
+    },
   })
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {
@@ -36,13 +36,13 @@ router.get('/:id', (req, res) => {
       attributes: ['id', 'project_title', 'time'],
       include: {
         model: Heading,
-      attributes: ['id', 'heading_title', 'time', 'project_id'],
-      include: {
-        model: Task,
-        attributes: ['id', 'desc', 'time', 'heading_id'],
+        attributes: ['id', 'heading_title', 'time', 'project_id'],
+        include: {
+          model: Task,
+          attributes: ['id', 'desc', 'time', 'heading_id'],
         },
-      }
-    }
+      },
+    },
   })
     .then((dbUserData) => {
       if (!dbUserData) {
@@ -99,7 +99,7 @@ router.post('/login', (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.id = dbUserData.id;
+      req.session.user_id = dbUserData.id;
       req.session.firstname = dbUserData.firstname;
       req.session.lastname = dbUserData.lastname;
       req.session.loggedIn = true;

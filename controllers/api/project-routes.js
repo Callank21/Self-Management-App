@@ -49,16 +49,18 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  Project.create({
-    project_title: req.body.project_title,
-    time: 0,
-    user_id: req.session.user_id,
-  })
-    .then((dbPostData) => res.json(dbPostData))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  if (req.session) {
+    Project.create({
+      project_title: req.body.project_title,
+      time: 0,
+      user_id: req.session.user_id,
+    })
+      .then((dbPostData) => res.json(dbPostData))
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  }
 });
 
 router.put('/:id', (req, res) => {

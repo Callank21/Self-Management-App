@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Project, Heading, Task } = require('../models');
+const { User, Project, Heading, Task } = require('../models');
 
 router.get('/', function (req, res) {
   res.render('homepage', {
@@ -10,6 +10,10 @@ router.get('/', function (req, res) {
 });
 
 router.get('/login', function (req, res) {
+  if (req.session.loggedIn) {
+    res.redirect('/dashboard');
+    return;
+  }
   res.render('login', {
     title: 'Log In',
   });
@@ -28,23 +32,42 @@ router.get('/calendar', function (req, res) {
 });
 
 router.get('/dashboard', (req, res) => {
-  Project.findAll({
-    attributes: ['id', 'project_title', 'user_id'],
+  console.log(req.session);
+  console.log(req.session.id);
+  console.log(req.session.firstname);
+  // Project.findAll({
+  //   attributes: ['id', 'project_title', 'user_id'],
+  //   include: {
+  //     model: Heading,
+  //     attributes: ['id', 'heading_title', 'project_id'],
+  //     include: {
+  //       model: Task,
+  //       attributes: ['id', 'desc', 'time', 'heading_id'],
+  //     },
+  //   },
+  // })
+  User.findAll({
+    attributes: { exclude: ['password'] },
+    where: {
+      id: req.session.user_id,
+    },
     include: {
-      model: Heading,
-      attributes: ['id', 'heading_title', 'project_id'],
+      model: Project,
+      attributes: ['id', 'project_title', 'time'],
       include: {
-        model: Task,
-        attributes: ['id', 'desc', 'time', 'heading_id'],
+        model: Heading,
+        attributes: ['id', 'heading_title', 'time', 'project_id'],
+        include: {
+          model: Task,
+          attributes: ['id', 'desc', 'time', 'heading_id'],
+        },
       },
     },
   })
     .then((dbCategoryData) => {
-      const projects = dbCategoryData.map((project) =>
-        project.get({ plain: true })
-      );
+      const users = dbCategoryData.map((user) => user.get({ plain: true }));
 
-      res.render('dashboard', { projects, title: 'My Dashboard' });
+      res.render('dashboard', { users, title: 'My Dashboard' });
     })
     .catch((err) => {
       console.log(err);
