@@ -1,3 +1,5 @@
+function headingFormHandler(event) {
+  event.preventDefault();
 
   if (event.target.matches('#headingBtn')) {
     const headingBtnId = event.target.getAttribute('data-headingbtn-id');
@@ -8,5 +10,6 @@
 
     headingSubmit.classList.remove('hidden');
   }
+}
 
 document.addEventListener('click', headingFormHandler);
