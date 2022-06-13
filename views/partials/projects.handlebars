@@ -3,6 +3,7 @@
 
   {{!-- <div class='w-full lg:w-1/3 rounded overflow-hidden mt-4 ml-3'> --}}
     <div
+    id="parent_div"
     data-id="{{id}}"
       class='w-96 m-2 px-3 py-4 border-gray-700 rounded-lg bg-gray-700 shadow-lg'
     >
@@ -11,18 +12,18 @@
         class='text-3xl text-center font-medium drop-shadow-xl text-gray-100'
       >{{project_title}}</span>
       <button
-        id='HeadingPlusBtn'
+        id='{{id}}HeadingPlusBtn'
+        data-id="{{id}}"
         class='text-4xl text-center font-bold drop-shadow-xl text-white'
       >+</button>
       <br />
     </div>
-
-      {{> plusBtn title='Heading' hidden='hidden' }}
+      {{> submitForm title='Heading' }}
      
       {{> sub_projects }}    
     
       <div class='text-gray-400 text-lg'><a href='#'>Edit Task</a></div>
-      <div class='text-gray-400'><a href='#'><svg
+      <div class='text-gray-400'><a href=''><svg
             xmlns='http://www.w3.org/2000/svg'
             class='h-6 w-6'
             fill='none'
@@ -41,3 +42,4 @@
   {{/each}}
 
 <script src='/javascript/HeadingPlusBtn.js'></script>
+<script src='/javascript/setVar.js'></script>

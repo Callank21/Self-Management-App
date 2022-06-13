@@ -1,10 +1,10 @@
-function headingFormHandler(event) {
-  event.preventDefault();
 
-  document.querySelector('#HeadingDisplay').style.display = 'none';
-  document.querySelector('#HeadingSubmitForm').classList.remove('hidden');
-}
+  function headingFormHandler(event) {
+    event.preventDefault();
+   
+  }
 
-document
-  .querySelector('#HeadingPlusBtn')
+
+
+document.activeElement
   .addEventListener('click', headingFormHandler);

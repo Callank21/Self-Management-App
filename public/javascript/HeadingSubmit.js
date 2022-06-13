@@ -6,6 +6,6 @@ async function HeadingTitleSubmit(event) {
   }
   
     document
-    .querySelector('#HeadingSubmit')
+    .querySelector('#parent_div')
     .addEventListener('click', HeadingTitleSubmit);
   

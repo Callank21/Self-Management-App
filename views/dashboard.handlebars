@@ -117,16 +117,31 @@
       class='w-96 pt-0 m-2 px-3 py-4 border-gray-700 rounded-lg bg-gray-700 shadow-lg'
     >
   
-    {{> plusBtn title='Project' }}
+    <div
+  id='ProjectDisplay'
+  class=' p-2 pt-0 mb-6 block flex justify-between items-center'
+>
+  <div
+    class='text-3xl text-center font-medium drop-shadow-xl text-gray-100'
+  >Project</div>
 
-    {{> plusBtn title='Heading' hidden='hidden' }} 
-
-    {{> plusBtn title='Task' hidden='hidden'}}
+  <div class='rounded overflow-hidden'>
+    <div
+      class='m-2 p-2 border border-gray-700 rounded-lg bg-gray-700 shadow-lg'
+    >
+      <button
+        id='ProjectPlusBtn'
+        class='text-4xl text-center font-bold drop-shadow-xl text-white'
+      >+</button>
+    </div>
+  </div>
+</div>
+{{> submitForm title='Project'}}
 
   </div>
 
 <script src='/javascript/add-project.js'></script>
-<script src='/javascript/add-task.js'></script>
+<script src='/javascript/HeadingSubmit.js'></script>
 <script src='/javascript/dashboard.js'></script>
 <script src='/javascript/logout.js'></script>
 <script src='/javascript/addTime.js'></script>
