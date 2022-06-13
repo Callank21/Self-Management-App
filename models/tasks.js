@@ -17,22 +17,15 @@ Task.init(
     },
     time: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
-    // project_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'project',
-    //     key: 'id',
-    //   },
-    // },
-    // heading_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'heading',
-    //     key: 'id',
-    //   },
-    // },
+    heading_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'heading',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,

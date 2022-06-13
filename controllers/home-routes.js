@@ -32,20 +32,6 @@ router.get('/calendar', function (req, res) {
 });
 
 router.get('/dashboard', (req, res) => {
-  console.log(req.session);
-  console.log(req.session.id);
-  console.log(req.session.firstname);
-  // Project.findAll({
-  //   attributes: ['id', 'project_title', 'user_id'],
-  //   include: {
-  //     model: Heading,
-  //     attributes: ['id', 'heading_title', 'project_id'],
-  //     include: {
-  //       model: Task,
-  //       attributes: ['id', 'desc', 'time', 'heading_id'],
-  //     },
-  //   },
-  // })
   User.findAll({
     attributes: { exclude: ['password'] },
     where: {

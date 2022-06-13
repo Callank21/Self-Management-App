@@ -1,20 +1,31 @@
 {{#each headings}}
-  {{!-- <div heading='{{id}}'> --}}
-  <div class='pl-2 my-3 mb-6 bg-cyan-700 block p-2 rounded-lg'><span
-      class='text-2xl text-white sm:text-md font-light'
+  <div class='pl-2 my-3 mb-6 bg-cyan-700 block p-2 rounded-lg'>
+    <div class='flex justify-between items-center'>
+      <span class='text-2xl text-white sm:text-md font-medium'>
+        {{heading_title}}
+      </span>
+      <div
+   
+        class='pt-0 p-2 border border-cyan-700 rounded-lg bg-cyan-700 shadow-lg'
+      >
+        <button
+          data-addtaskbtn-id={{id}}
+          id='addTaskBtn'   
+          class='text-3xl text-center font-bold drop-shadow-xl text-white'
+        >+</button>
+      </div>
+    </div>
+    {{#each tasks}}
+    <div
+      class='items-center justify-between flex text-xl bg-sky-500 mt-3 block p-2 text-white rounded-lg sm:text-md font-light'
     >
-      {{heading_title}}
-    </span>
-    {{!-- {{#each tasks}}
-        <div
-          class='items-center justify-between flex text-xl bg-sky-500 mt-3 block p-2 text-white rounded-lg sm:text-md font-light'
-        >
-          <div>{{desc}}</div><div class='text-gray-700 text-lg'>Time:
-            {{time}}
-          </div>
-        </div>
-      {{/each}} --}}
+      <div class="font-medium">{{desc}}</div><div class='font-bold text-gray-700 text-lg'>Time:
+        {{time}}
+      </div>
+    </div>
+    {{/each}}
+
+  {{> taskSubmit }}
   </div>
 
-  {{! </div> }}
 {{/each}}
