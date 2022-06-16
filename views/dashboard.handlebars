@@ -50,18 +50,25 @@
     </nav>
   </header>
     
-    <div class='flex w-full justify-start flex-wrap'>
+    <div name="main body class" class='flex w-full justify-start flex-wrap'>
        {{> addHeadings }}
 
-    </div>
-    <div
+    
+      <div name="new project class"
       class='h-full w-96 pt-0 m-2 px-3 py-4 border-gray-700 rounded-lg bg-gray-700 shadow-lg'>
    
   
     {{> newProject }}
 
+      </div>
+  
+</div>
+</div>
 
-  </div>
+  <div id="context-menu" class="fixed z-10000 w-150 bg-gray-800 rounded-md hidden">
+    <div id="edit" class="px-6 py-6 text-base text-neutral-50 rounded-md hover:bg-gray-700" onclick="editItem()">Edit</div>
+    <div id="delete" class="px-6 py-6 text-base text-neutral-50 rounded-md hover:bg-gray-700" onclick="deleteItem()">Delete</div>
+</div>
 
 <script src='/javascript/add-project.js'></script>
 <script src='/javascript/taskPlusBtn.js'></script>
@@ -71,4 +78,6 @@
 <script src='/javascript/logout.js'></script>
 {{!-- <script src='/javascript/addTime.js'></script> --}}
 <script src='/javascript/editProject.js'></script>
+<script src='/javascript/context-menu.js'></script>
+</div>
 </body>

@@ -30,6 +30,7 @@ async function editSubmit(event) {
 
       var submitId = `#${itemType}_edit`;
       var divId = `#${itemType}EditForm${itemId}`;
+      console.log(submitId.value);
 
       if (itemType == "project") {
         const project_title = document.querySelector(submitId).value;
@@ -67,6 +68,7 @@ async function editSubmit(event) {
       }
       else if (itemType == "task") {
         const desc = document.querySelector(submitId).value;
+        console.log(desc);
         const time = document.querySelector('#taskTime').value;
         const response = await fetch(`/api/tasks/${itemId}`, {
           method: 'PUT',
