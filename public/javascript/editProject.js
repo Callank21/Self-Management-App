@@ -95,34 +95,3 @@ function deleteItem() {
   var itemType = localStorage.getItem("itemType");
   var itemId = localStorage.getItem("itemId");
 }
-
-// async function ProjectTitleEdit(event) {
-//     event.preventDefault();
-  
-//     if (event.target.matches('#project')) {
-//       const projectId = event.target.getAttribute('data-headingsubmit-id');
-  
-//       const heading_title = document.querySelector(
-//         '[data-headingtitle-id="' + projectId + '"]'
-//       ).value;
-  
-//       if (heading_title) {
-//         const response = await fetch(`/api/headings${projectId}`, {
-//           method: 'PUT',
-//           body: JSON.stringify({
-//             heading_title
-//           }),
-//           headers: {
-//             'Content-Type': 'application/json',
-//           },
-//         });
-//         if (response.ok) {
-//           document.location.replace('/dashboard');
-//         } else {
-//           alert(response.statusText);
-//         }
-//       }
-//     }
-//   }
-  
-//   document.addEventListener('dblclick', ProjectTitleEdit);
