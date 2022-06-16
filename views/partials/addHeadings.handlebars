@@ -5,8 +5,8 @@
       class='pt-0 w-96 m-2 px-3 py-4 border-gray-700 rounded-lg bg-gray-700 shadow-lg'
     >
 
-    <div data-project-id={{id}} id='project' class='p-2 pt-0 mb-6 block border-b-4 flex justify-between items-center'>
-     <div
+    <div class='p-2 pt-0 mb-6 block border-b-4 flex justify-between items-center'>
+     <div data-project-id={{id}} id='project'
         class='text-3xl text-center font-medium drop-shadow-xl text-gray-100'
       >{{project_title}}</div>
    
@@ -22,6 +22,8 @@
     </div>
 
     </div>
+
+{{> editSubmit title='project'}}
 
 {{> sub_projects }}  
 
@@ -48,5 +50,11 @@
   {{/each}}
 {{/each}}
 
+  <div id="context-menu" class="fixed z-10000 w-150 bg-gray-800 rounded-md hidden">
+    <div id="edit" class="px-6 py-6 text-base text-neutral-50 rounded-md hover:bg-gray-700" onclick="editItem()">Edit</div>
+    <div id="delete" class="px-6 py-6 text-base text-neutral-50 rounded-md hover:bg-gray-700" onclick="deleteItem()">Delete</div>
+</div>
+
 <script src='/javascript/HeadingPlusBtn.js'></script>
 <script src='/javascript/setVar.js'></script>
+<script src='/javascript/context-menu.js'></script>

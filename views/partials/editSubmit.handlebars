@@ -1,0 +1,37 @@
+<div data-edithidden-id={{id}} id='{{title}}EditForm{{id}}' class='hidden mb-2'>
+    {{#if isTask}}
+    <textarea
+    id='task_edit'
+    data-tasktitle-id={{id}}
+    rows='4'
+    cols='50'
+    class='block text-xl post-title-input w-full p-2 text-white border rounded-lg sm:text-md bg-gray-700'
+    placeholder='Task description'
+  ></textarea>
+
+  <div class='mt-3 flex justify-between'>
+    <input
+      id='taskTime'
+      data-time-id={{id}}
+      type='text'
+      class='block text-base p-2 post-title-input text-white border rounded-lg sm:text-md bg-gray-700'
+      placeholder='Time: min'
+    />
+    {{else}}
+  <input
+    id='{{title}}_edit'
+    data-{{title}}title-id={{id}}
+    type='text'
+    class='block text-xl post-title-input w-full p-4 text-gray-700 border rounded-lg sm:text-md bg-cyan-700-w'
+    placeholder='{{title}} title'
+  />
+  {{/if}}
+  <div class='pt-2 pl-3 pb-4 flex justify-end'>
+    <button
+      id='editSubmit'
+      data-editsubmit-id={{id}}
+      type='submit'
+      class='create-btn bg-blue-500 hover:bg-blue-700 text-white font-normal py-1 px-4 rounded'
+    >Submit</button>
+  </div>
+</div>
